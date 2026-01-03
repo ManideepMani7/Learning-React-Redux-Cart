@@ -10,13 +10,13 @@ const Products: React.FC = (): JSX.Element => {
     const dispatch = useAppDispatch()
     const { items, status } = useAppSelector(state => state.products)
 
-    const handleAddToCart = (id: number): void => {
-        console.log(id);
-        dispatch(addItem());
+    const handleAddToCart = (item: Product): void => {
+        console.log(item);
+        dispatch(addItem(item));
     }
     const handleRemoveFromCart = (id: number): void => {
         console.log(id);
-        dispatch(removeItem());
+        dispatch(removeItem(id));
     }
 
     useEffect(() => {
@@ -42,7 +42,8 @@ const Products: React.FC = (): JSX.Element => {
                             onAddToCart={handleAddToCart}
                             removeItemFromCart={handleRemoveFromCart}
                             rating={item.rating}
-                            brand={item.brand} />
+                            brand={item.brand}
+                            item={item} />
 
                     ))
                 }

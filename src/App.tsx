@@ -1,15 +1,21 @@
 
 import './App.css'
+import Cart from './components/Cart';
 import Header from './components/Header'
 import Products from './components/Products'
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
 
   return (
     <>
-      <Header />
-      <Products />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Products />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
